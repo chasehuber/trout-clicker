@@ -1,0 +1,23 @@
+.trout {
+  transition: all .2s ease-in-out;
+  filter: drop-shadow(0 0 1rem #ffffff)
+}
+
+.trout:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 2rem #ffffff)
+}
+
+.trout:active {
+  transform: scale(.95);
+}
+
+.trout-container {
+  background-image: url('./assets/background.jpeg');
+  background-size: 100% 100%;
+  resize: none;
+}
+
+h1 {
+  text-shadow: 2px 2px 3px #000000d0;
+}
