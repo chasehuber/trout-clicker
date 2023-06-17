@@ -20,8 +20,9 @@ function App() {
     if(cookieFishCount > 0) {
       setFishCount(cookieFishCount)
     }
-
-    setRodCount(cookieRodCount)
+    if(rodCount > 0) {
+      setRodCount(cookieRodCount)
+    }
   }, [])
 
   // Borrowed this useInterval code from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
