@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@media screen and (max-width: 480px) {
+  .game-container { @apply block h-full }
+  .trout-box { 
+    @apply trout-container h-full w-full flex 
+    justify-center items-center col-start-2
+  }
+
+  .shopping-icon { 
+    @apply block absolute right-4 top-4 p-2 scale-125 bg-slate-500 
+    bg-opacity-70 border-2 rounded-md active:bg-slate-200 
+  }
+
+  .trout-box-hidden { @apply hidden }
+  .upgrade-container { @apply hidden }
+  .upgrade { @apply border-2 border-red-500 text-center p-2 active:bg-gray-600 }
+  .mobile-upgrade-store { @apply block h-full w-full }
+}
+
+@media screen and (min-width: 481px) {
+  .game-container { @apply grid grid-cols-3 h-full row-span-1 }
+  .shopping-icon { @apply hidden }
+  .trout-box { @apply trout-container flex justify-center items-center border-x-2 col-start-2 }
+  .upgrade-container { @apply col-start-3 }
+  .upgrade { @apply border-2 border-red-500 text-center p-2 hover:bg-gray-600 }
+}
+
 :root {
   font-family: "Oswald";
   line-height: 1.5;
@@ -18,5 +44,30 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  
+}
+
+h1 {
+  text-shadow: 2px 2px 3px #000000d0;
+}
+
+/* I don't know how to do a lot of this in tailwind so I did it in vanilla CSS */
+
+.trout {
+  transition: all .2s ease-in-out;
+  filter: drop-shadow(0 0 1rem #ffffff)
+}
+
+.trout:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 2rem #ffffff)
+}
+
+.trout:active {
+  transform: scale(.95);
+}
+
+.trout-container {
+  background-image: url('./assets/background.jpeg');
+  background-size: 100% 100%;
+  resize: none;
 }

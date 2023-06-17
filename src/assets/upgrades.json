@@ -1,0 +1,12 @@
+{
+  "0": {
+    "name": "fishing_rod",
+    "base_cost": 15,
+    "tps": 0.1
+  },
+  "1": {
+    "name": "baller",
+    "base_cost": 100,
+    "tps": 1
+  }
+}

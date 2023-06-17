@@ -1,22 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "./PlayerContext";
 
-function Upgrade() {
-  const {setFishCount, fishCount, rodCount, setRodCount} = useContext(PlayerContext)
-  let baseCost = 15
-  let cost = Math.ceil(baseCost * (1.15 ** (rodCount)))
+function Upgrade({ upgradeData }) {
+  const {setFishCount, fishCount, upgradeList, setUpgradeList} = useContext(PlayerContext)
+  const[upgradeCount, setUpgradeCount] = useState(0)
+
+  let baseCost = upgradeData.base_cost
+  let cost = Math.ceil(baseCost * (1.15 ** (upgradeCount)))
 
   function purchaseUpgrade() {
-    if(fishCount >= (rodCount === 0 ? baseCost : cost)) {
-      setFishCount(fishCount - (rodCount === 0 ? baseCost : cost))
-      setRodCount(rodCount + 1)
-    }    
+    if(fishCount < cost) {return}
+
+    if(fishCount >= (upgradeCount === 0 ? baseCost : cost)) {
+      setFishCount(fishCount - (upgradeCount === 0 ? baseCost : cost))
+      setUpgradeCount(upgradeCount + 1)
+    }
+
+    if(upgradeCount === 0) {setUpgradeList([...upgradeList, {name: upgradeData.name, count: 1}])}
+
+    else {
+      setUpgradeList(upgradeList.map(upgrade => {
+        if(upgrade.name === upgradeData.name) {
+          return {name: upgradeData.name, count: upgradeCount}
+        }
+      }))
+    }
   }
 
   return (
-    <div className="border-2 border-red-500 text-center p-2 hover:bg-gray-600" onClick={purchaseUpgrade}>
-      <h1>This is absolutely an upgrade</h1>
-      <h1>Cost: {rodCount === 0 ? baseCost : cost}</h1>
+    <div className="upgrade" onClick={purchaseUpgrade}>
+      <h1>{upgradeData.name}</h1>
+      <h1>Cost: {upgradeCount === 0 ? baseCost : cost}</h1>
     </div>
   )
 }

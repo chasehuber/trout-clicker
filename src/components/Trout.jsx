@@ -4,11 +4,11 @@ import '../App.css'
 import Cookies from "js-cookie";
 import { PlayerContext } from "./PlayerContext";
 
-function Trout() {
+function Trout({ storeOpen }) {
   const {fishCount, setFishCount} = useContext(PlayerContext)
 
   return (
-    <div className="flex justify-center items-center trout-container border-x-2 col-start-2">
+    <div className={storeOpen ? "trout-box-hidden" : "trout-box"}>
       <div className="w-full">
         <div onClick={() => setFishCount((fishCount + 1))} className="flex justify-center trout m-4">
           <img src={troutPic}/>
