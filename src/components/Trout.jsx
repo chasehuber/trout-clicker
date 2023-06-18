@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { PlayerContext } from "./PlayerContext";
 
 function Trout({ storeOpen }) {
-  const {fishCount, setFishCount} = useContext(PlayerContext)
+  const {fishCount, setFishCount, troutPerSec} = useContext(PlayerContext)
 
   return (
     <div className={storeOpen ? "trout-box-hidden" : "trout-box"}>
@@ -15,7 +15,8 @@ function Trout({ storeOpen }) {
         </div>
 
         <div className="text-center text-5xl p-2 w-full bg-gray-800 bg-opacity-80">
-          <h1>{fishCount} Trout</h1>
+          <h1>{Math.floor(fishCount)} Trout</h1>
+          <h1 className="text-2xl">{(troutPerSec).toFixed(1)} TPS (Trout per second)</h1>
         </div>
       </div>
     </div>

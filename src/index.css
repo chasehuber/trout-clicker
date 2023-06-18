@@ -16,7 +16,7 @@
 
   .trout-box-hidden { @apply hidden }
   .upgrade-container { @apply hidden }
-  .upgrade { @apply border-2 border-red-500 text-center p-2 active:bg-gray-600 }
+  .upgrade { @apply grid grid-cols-3 border-2 border-red-500 text-center p-2 active:bg-gray-600 }
   .mobile-upgrade-store { @apply block h-full w-full }
 }
 

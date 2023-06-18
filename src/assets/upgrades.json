@@ -1,11 +1,13 @@
 {
   "0": {
-    "name": "fishing_rod",
+    "id": 0,
+    "name": "Fishing Rod",
     "base_cost": 15,
     "tps": 0.1
   },
   "1": {
-    "name": "baller",
+    "id": 1,
+    "name": "Fish Trap",
     "base_cost": 100,
     "tps": 1
   }

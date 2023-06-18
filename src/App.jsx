@@ -7,8 +7,7 @@ import { PlayerContext } from './components/PlayerContext'
 import ShoppingIcon from './assets/ShoppingIcon'
 
 function App() {
-  const {fishCount, setFishCount, upgradeList} = useContext(PlayerContext);
-  const [autoClickCount, setAutoClickCount] = useState(0)
+  const {fishCount, setFishCount, troutPerSec } = useContext(PlayerContext);
   const [storeOpen, setStoreOpen] = useState(false)
   const clickMultiplier = 1;
 
@@ -17,15 +16,10 @@ function App() {
   // user values accessible from one place.
   useEffect(() => {
     let cookieFishCount = parseInt(Cookies.get('Trout'))
-    // let cookieRodCount = parseInt(Cookies.get('Upgrades'))
 
     if(cookieFishCount > 0) {
       setFishCount(cookieFishCount)
     }
-
-    // if(cookieRodCount > 0) {
-    //   setRodCount(cookieRodCount)
-    // }
   }, [])
 
   // Borrowed this useInterval code from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
@@ -52,26 +46,13 @@ function App() {
 
   // Game ticks once a second, this is where we will probably be doing the trout number adjustment
   function tick() {
-    // if(autoClickCount === 10) {
-    //   setAutoClickCount(0)
-    //   setFishCount(fishCount )
-    //   console.log("autoclicked")
-    // }
-    // else {
-    //   setAutoClickCount(autoClickCount + 1)
-    // }
+    setFishCount(fishCount + troutPerSec)
   }
 
   // Here is where the actual ticking is happening, this is the "game loop" if you want to call it that
   useInterval(() => {
     tick()
   }, 1000)
-
-  // Every x minutes this will update the 'Trout' cookie with how many trouts you have (This is your autosave)
-  useInterval(() => {
-    Cookies.set('Trout', fishCount)
-    // Cookies.set('Upgrades', rodCount)
-  }, 30000)
 
   return (
     <div className='game-container'>
