@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'driftwood-texture': "url('./src/assets/driftwood.png')"
+      }
+    },
   },
   plugins: [],
 }

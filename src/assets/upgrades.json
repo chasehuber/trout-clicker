@@ -1,14 +1,22 @@
 {
   "0": {
-    "id": 0,
     "name": "Fishing Rod",
     "base_cost": 15,
     "tps": 0.1
   },
   "1": {
-    "id": 1,
     "name": "Fish Trap",
     "base_cost": 100,
     "tps": 1
+  },
+  "2": {
+    "name": "Boat",
+    "base_cost": 1000,
+    "tps": 10
+  },
+  "3": {
+    "name": "Extra Fisherman",
+    "base_cost": 10000,
+    "tps": 50
   }
 }
