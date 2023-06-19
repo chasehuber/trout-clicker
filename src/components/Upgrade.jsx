@@ -46,7 +46,7 @@ function Upgrade({ upgradeData }) {
 
   return (
     <div className="upgrade-background">
-      <div className={fishCount > cost ? "upgrade" : "upgrade-unaffordable"} onClick={purchaseUpgrade}>
+      <div className={fishCount >= cost ? "upgrade" : "upgrade-unaffordable"} onClick={purchaseUpgrade}>
         <h1>{upgradeData.name}</h1>
         <h1>Cost: {upgradeCount === 0 ? baseCost : cost}</h1>
         <h1>Owned: {upgradeCount}</h1>
