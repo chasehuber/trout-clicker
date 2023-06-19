@@ -5,7 +5,7 @@ const PlayerContext = createContext()
 
 function PlayerProvider({ children }) {
   const [fishCount, setFishCount] = useState(0)
-  const [upgradeSave, setUpgradeSave] = useState([])
+  const [upgradeSaveInfo, setUpgradeSaveInfo] = useState([])
   const [troutPerSec, setTroutPerSec] = useState(0.0)
   const [lastSaved, setLastSaved] = useState("")
 
@@ -16,8 +16,15 @@ function PlayerProvider({ children }) {
   // Be careful fucking with this stuff, it checks for the save file stuff and updates
   // state of certain objects accordingly
   useEffect(() => {
-    if(JSON.parse(window.localStorage.getItem('upgrades'))) {
-      setUpgradeSave(JSON.parse(window.localStorage.getItem('upgrades')))
+    const localSave = JSON.parse(window.localStorage.getItem('save-file'))
+
+    if(localSave) {
+      setFishCount(localSave.fishCount)
+      setUpgradeSaveInfo(localSave.upgrades)
+    }
+
+    else {
+      createSaveFile()
     }
 
     if(Cookies.get('TPS')) {
@@ -47,18 +54,26 @@ function PlayerProvider({ children }) {
     }, [delay]);
   }
 
+  function createSaveFile() {
+    let saveObject = (
+      {      
+        "fishCount": fishCount ,
+        "troutPerSec": troutPerSec ,
+        "upgrades": upgradeSaveInfo
+      }
+    )
+    localStorage.setItem('save-file', JSON.stringify(saveObject))
+  }
+
   // Every x minutes this will update the 'Trout' cookie with how many trouts you have (This is your autosave)
   useInterval(() => {
-    Cookies.set('Trout', fishCount)
-    Cookies.set('TPS', troutPerSec)
-    if(upgradeSave) {
-      localStorage.setItem('upgrades', JSON.stringify(upgradeSave))
-    }
+    createSaveFile()
+
     setLastSaved(date)
-  }, 60000)
+  }, 10000)
 
   return(
-    <PlayerContext.Provider value={{ fishCount, setFishCount, upgradeSave, setUpgradeSave, troutPerSec, setTroutPerSec, lastSaved }}>
+    <PlayerContext.Provider value={{ fishCount, setFishCount, upgradeSaveInfo, setUpgradeSaveInfo, troutPerSec, setTroutPerSec }}>
       { children }
     </PlayerContext.Provider>
   )

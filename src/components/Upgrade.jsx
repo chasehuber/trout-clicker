@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { PlayerContext } from "./PlayerContext";
 
 function Upgrade({ upgradeData }) {
-  const {setFishCount, fishCount, upgradeSave, setUpgradeSave, troutPerSec, setTroutPerSec, lastSaved} = useContext(PlayerContext)
+  const {setFishCount, fishCount, upgradeSaveInfo, setUpgradeSaveInfo, troutPerSec, setTroutPerSec} = useContext(PlayerContext)
   const[upgradeCount, setUpgradeCount] = useState(0)
   const realCount = useRef();
 
@@ -11,8 +11,8 @@ function Upgrade({ upgradeData }) {
 
   // This updates the item counts if there is a save file present
   useEffect(() => {
-    if(upgradeSave) {
-      let searchedArray = [...upgradeSave]
+    if(upgradeSaveInfo) {
+      let searchedArray = [...upgradeSaveInfo]
 
       let index = searchedArray.findIndex(upgrade => upgrade.name === upgradeData.name)
 
@@ -33,14 +33,14 @@ function Upgrade({ upgradeData }) {
     }
 
     // This sets an initial save, without this single line of code, the saves for upgrades is very upset
-    if(upgradeCount === 0) {setUpgradeSave([...upgradeSave, {name: upgradeData.name, count: 1}])}
+    if(upgradeCount === 0) {setUpgradeSaveInfo([...upgradeSaveInfo, {name: upgradeData.name, count: 1}])}
 
     else {
-      let newArray = [...upgradeSave]
+      let newArray = [...upgradeSaveInfo]
       let index = newArray.findIndex(upgrade => upgrade.name === upgradeData.name)
       newArray[index] = {name: upgradeData.name, count: upgradeCount + 1}
 
-      setUpgradeSave(newArray)
+      setUpgradeSaveInfo(newArray)
     }
   }
 

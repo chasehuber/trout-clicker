@@ -18,12 +18,12 @@ function UpgradeContainer({ storeOpen }) {
   
 
   return (
-    <div className={ storeOpen ? "mobile-upgrade-store" : "upgrade-container" }>
-      <div className="shop-banner flex justify-center border-2 border-red-500 h-20">
+    <div className={ storeOpen ? "mobile-upgrade-store" : "upgrade-container grid-rows-auto" }>
+      <div className="shop-banner">
         <h1 className="inline-block text-center self-center text-2xl p-2">Bait and Tackle</h1>
       </div>
-      <div>
-        {upgradeArray}
+      <div className="overflow-scroll">
+          {upgradeArray}
       </div>
     </div>
   )
