@@ -21,14 +21,11 @@ function PlayerProvider({ children }) {
     if(localSave) {
       setFishCount(localSave.fishCount)
       setUpgradeSaveInfo(localSave.upgrades)
+      setTroutPerSec(localSave.troutPerSec)
     }
 
     else {
       createSaveFile()
-    }
-
-    if(Cookies.get('TPS')) {
-      setTroutPerSec(parseFloat(Cookies.get('TPS')))
     }
   },[])
 

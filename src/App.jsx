@@ -11,17 +11,6 @@ function App() {
   const [storeOpen, setStoreOpen] = useState(false)
   const clickMultiplier = 1;
 
-  // Checks to see if you have any fish in your count already
-  // This is later going to move into its own function, might bring out useContext to have all of the 
-  // user values accessible from one place.
-  useEffect(() => {
-    let cookieFishCount = parseInt(Cookies.get('Trout'))
-
-    if(cookieFishCount > 0) {
-      setFishCount(cookieFishCount)
-    }
-  }, [])
-
   // Borrowed this useInterval code from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
   // Works the way I want it to, setInterval() sucks
   function useInterval(callback, delay) {
