@@ -16,7 +16,9 @@
 
   .trout-box-hidden { @apply hidden }
   .upgrade-container { @apply hidden }
-  .upgrade { @apply grid grid-cols-3 border-2 border-red-500 text-center p-2 active:bg-gray-600 }
+  .upgrade-background { @apply bg-driftwood-texture border-4 border-gray-400 m-1 rounded-md }
+  .upgrade { @apply grid grid-cols-3 text-center shadow-inner rounded-[calc(theme(borderRadius.md)-4px)] shadow-black p-2 hover:bg-gray-200 hover:bg-opacity-30 }
+  .upgrade-unaffordable {@apply grid grid-cols-3 rounded-[calc(theme(borderRadius.md)-4px)] text-center p-2 bg-black bg-opacity-70 text-gray-400}
   .mobile-upgrade-store { @apply block h-full w-full }
 }
 
