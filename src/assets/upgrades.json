@@ -30,12 +30,12 @@
     "tps": 1500
   },
   "6": {
-    "name": "Interplanetary Trout Shipment",
+    "name": "Lab Grown Trout",
     "base_cost": 10000000,
     "tps": 10000
   },
   "7": {
-    "name": "Lab Grown Trout",
+    "name": "Interplanetary Trout Shipment",
     "base_cost": 100000000,
     "tps": 150000
   }
