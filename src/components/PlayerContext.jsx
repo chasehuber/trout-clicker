@@ -70,7 +70,7 @@ function PlayerProvider({ children }) {
     createSaveFile()
 
     setLastSaved(date)
-  }, 10000)
+  }, 60000)
 
   return(
     <PlayerContext.Provider value={{ fishCount, setFishCount, upgradeSaveInfo, setUpgradeSaveInfo, troutPerSec, setTroutPerSec }}>
